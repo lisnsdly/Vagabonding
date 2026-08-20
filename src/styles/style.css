@@ -263,6 +263,123 @@ nav a:hover {
   filter: drop-shadow(0 2px 2px rgba(94, 89, 89, 0.2));
 }
 
+/* 手機漢堡選單（桌面隱藏） */
+.nav-toggle,
+.mobile-menu {
+  display: none;
+}
+
+.nav-toggle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-toggle__bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px auto;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+}
+
+.site-header.is-scrolled .nav-toggle__bar,
+.site-header--solid .nav-toggle__bar,
+.site-header.is-menu-open .nav-toggle__bar {
+  background: #1f2a3a;
+  box-shadow: none;
+}
+
+.site-header.is-scrolled .nav-toggle,
+.site-header--solid .nav-toggle,
+.site-header.is-menu-open .nav-toggle {
+  background: rgba(31, 42, 58, 0.08);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  padding: 88px 20px 24px;
+  background: rgba(245, 247, 249, 0.98);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 32px rgba(20, 28, 40, 0.14);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobile-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 14px 12px;
+  border-radius: 10px;
+  color: #1f2a3a;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-shadow: none;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a:focus-visible {
+  background: rgba(31, 42, 58, 0.06);
+}
+
+.mobile-menu a[aria-current="page"] {
+  background: rgba(47, 111, 104, 0.12);
+  color: #2f6f68;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+.site-header.is-menu-open {
+  background: rgba(245, 247, 249, 0.98);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(80, 90, 100, 0.1);
+}
+
 .background-text {
   position: absolute;
   top: 45%;              
@@ -629,54 +746,41 @@ nav a:hover {
 ================================ */
 @media (max-width: 800px) {
   .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "logo logo"
-      "navleft navright";
-    justify-items: stretch;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    row-gap: 6px;
-    column-gap: 0;
-    padding: 10px 14px 12px;
+    position: relative;
+    padding: 8px 56px 8px 16px;
   }
 
-  .nav-left {
-    grid-area: navleft;
+  .nav-desktop {
+    display: none;
   }
 
-  .nav-right {
-    grid-area: navright;
+  .nav-toggle,
+  .mobile-menu {
+    display: block;
+  }
+
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 101;
   }
 
   .logo {
-    grid-area: logo;
-  }
-
-  .nav-left ul {
-    justify-content: flex-end;
-    padding-right: 10px;
-  }
-
-  .nav-right ul {
-    justify-content: flex-start;
-    padding-left: 10px;
-  }
-
-  .nav-left ul,
-  .nav-right ul {
-    gap: 18px;
-    flex-wrap: nowrap;
-  }
-
-  nav a {
-    font-size: 16px;
-    letter-spacing: 0.02em;
-    padding: 6px 2px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
   }
 
   .logo img {
-    height: 78px;
+    height: 72px;
   }
 
   .background {
@@ -797,20 +901,26 @@ nav a:hover {
 
 @media (max-width: 480px) {
   .container {
-    padding: 10px 12px 12px;
+    padding: 8px 52px 8px 12px;
   }
 
-  .nav-left ul,
-  .nav-right ul {
-    gap: 14px;
-  }
-
-  nav a {
-    font-size: 15px;
+  .nav-toggle {
+    right: 8px;
+    width: 42px;
+    height: 42px;
   }
 
   .logo img {
-    height: 72px;
+    height: 64px;
+  }
+
+  .mobile-menu {
+    padding-top: 80px;
+  }
+
+  .mobile-menu a {
+    font-size: 17px;
+    padding: 13px 10px;
   }
 
   .index-hero-title .hero-line,
