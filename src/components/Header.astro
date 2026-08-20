@@ -62,23 +62,24 @@ const links = [
       <span class="nav-toggle__bar" aria-hidden="true"></span>
     </button>
   </div>
-
-  <nav id="mobile-menu" class="mobile-menu" aria-label="手機選單" hidden>
-    <div class="mobile-menu__backdrop" data-menu-close aria-hidden="true"></div>
-    <div class="mobile-menu__panel">
-      <p class="mobile-menu__label">導覽</p>
-      <ul>
-        {links.map((link) => (
-          <li>
-            <a href={link.href} aria-current={link.active ? 'page' : undefined}>
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </nav>
 </header>
+
+{/* 選單放在 header 外，避免 solid header 的 backdrop-filter 把 fixed 定位鎖死 */}
+<nav id="mobile-menu" class="mobile-menu" aria-label="手機選單" hidden>
+  <div class="mobile-menu__backdrop" data-menu-close aria-hidden="true"></div>
+  <div class="mobile-menu__panel">
+    <p class="mobile-menu__label">導覽</p>
+    <ul>
+      {links.map((link) => (
+        <li>
+          <a href={link.href} aria-current={link.active ? 'page' : undefined}>
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
 
 <script>
   function initHeaderScroll() {

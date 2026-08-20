@@ -11,6 +11,7 @@ html {
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   background: #edf0f2;
   color: #2b2b2b;
   overflow-x: hidden;
@@ -96,7 +97,9 @@ ul {
 
 .background {
   position: relative;
+  /* 100dvh：隨瀏覽器 UI 伸縮，避免手機上露出 hero 下方內容 */
   min-height: 100vh;
+  min-height: 100dvh;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -120,7 +123,7 @@ ul {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 210;
   background: transparent;
   transition: background 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
 }
@@ -256,6 +259,7 @@ nav a:hover {
 .logo {
   display: flex;
   justify-content: center;
+  transition: opacity 0.2s ease;
 }
 .logo img {
   height: 120px; /* 你可以調整大小 */
@@ -359,11 +363,10 @@ nav a:hover {
   width: min(340px, 88vw);
   padding: 28px 24px 32px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  /* 不透明面板：在淺色 blog 頁與深色 hero 上都清晰可讀 */
+  background: #161c24;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   transform: translateY(12px) scale(0.98);
   transition: transform 0.28s ease;
 }
@@ -412,18 +415,18 @@ nav a:hover {
   letter-spacing: 0.22em;
   text-indent: 0.22em;
   text-align: center;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  text-shadow: none;
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .mobile-menu a:hover,
 .mobile-menu a:focus-visible {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .mobile-menu a[aria-current="page"] {
-  background: rgba(255, 220, 170, 0.16);
+  background: rgba(255, 220, 170, 0.14);
   color: #ffe8c4;
 }
 
@@ -434,6 +437,24 @@ body.menu-open {
 .site-header.is-menu-open {
   background: transparent;
   box-shadow: none;
+  /* 必須關掉，否則 fixed 選單會被鎖在 header 內而顯示異常 */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.site-header.is-menu-open .logo {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* solid header（文章頁）開選單時：漢堡鈕維持可點，色調與深色面板一致 */
+.site-header--solid.is-menu-open .nav-toggle {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(22, 28, 36, 0.92);
+}
+
+.site-header--solid.is-menu-open .nav-toggle__bar {
+  background: #fff;
 }
 
 .background-text {
@@ -825,9 +846,9 @@ body.menu-open {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: static;
+    position: relative;
     transform: none;
-    z-index: 201;
+    z-index: 210;
   }
 
   .logo {
@@ -841,10 +862,6 @@ body.menu-open {
 
   .logo img {
     height: 96px;
-  }
-
-  .background {
-    min-height: 100svh;
   }
 
   .background-text {
@@ -970,13 +987,22 @@ body.menu-open {
     padding: 140px 16px 64px;
   }
 
-  .post-article__hero-overlay {
-    padding: 20px 16px 22px;
+  .post-article__hero img {
+    height: 240px;
   }
 
-  .post-article__hero-overlay h1 {
+  .post-article__caption {
+    margin-top: 18px;
+  }
+
+  .post-article__title-main {
     letter-spacing: 0.04em;
-    font-size: clamp(22px, 6vw, 28px);
+    font-size: clamp(24px, 6.5vw, 30px);
+  }
+
+  .post-article__title-place {
+    letter-spacing: 0.14em;
+    font-size: clamp(16px, 4.2vw, 18px);
   }
 
   .post-article__body.prose {
@@ -1481,13 +1507,14 @@ body.menu-open {
   padding: 168px 20px 80px;
 }
 
+.post-article__media {
+  margin-bottom: 40px;
+}
+
 .post-article__hero {
-  position: relative;
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 36px;
-  min-height: 320px;
-  box-shadow: 0 18px 40px rgba(20, 24, 30, 0.18);
+  box-shadow: 0 18px 40px rgba(20, 24, 30, 0.14);
 }
 
 .post-article__hero img {
@@ -1497,31 +1524,43 @@ body.menu-open {
   display: block;
 }
 
-.post-article__hero-overlay {
-  position: absolute;
-  inset: auto 0 0 0;
-  padding: 28px 28px 32px;
-  background: linear-gradient(180deg, transparent, rgba(10, 14, 18, 0.78));
-  color: #fff;
+.post-article__caption {
+  margin-top: 22px;
 }
 
 .post-article__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin: 0 0 10px;
+  gap: 12px 16px;
+  margin: 0 0 12px;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  opacity: 0.92;
+  color: #2f6f68;
 }
 
-.post-article__hero-overlay h1 {
+.post-article__caption h1 {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.post-article__title-main {
   font-family: "Noto Serif HK", "Songti TC", serif;
   font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
   letter-spacing: 0.08em;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  line-height: 1.35;
+  color: #1f2a3a;
+}
+
+.post-article__title-place {
+  font-family: "Noto Serif HK", "Songti TC", serif;
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #5a6570;
 }
 
 .post-article__body.prose {
@@ -1617,10 +1656,6 @@ body.menu-open {
     min-height: 180px;
   }
 
-  .post-article__hero img {
-    height: 240px;
-  }
-
   .post-article__body.prose img {
     max-width: 100%;
     max-height: 56vh;
@@ -1660,7 +1695,9 @@ body.menu-open {
 }
 
 .post-article__video {
-  margin-bottom: 36px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(20, 24, 30, 0.14);
 }
 
 .post-article__video video {
@@ -1668,22 +1705,4 @@ body.menu-open {
   display: block;
   max-height: 70vh;
   background: #111;
-  border-radius: 16px;
-  box-shadow: 0 18px 40px rgba(20, 24, 30, 0.18);
-}
-
-.post-article__video-caption {
-  margin-top: 22px;
-}
-
-.post-article__video-caption h1 {
-  margin: 0;
-  font-family: "Noto Serif HK", "Songti TC", serif;
-  font-size: clamp(28px, 4vw, 40px);
-  letter-spacing: 0.08em;
-  color: #1f2a3a;
-}
-
-.post-article__video-caption .post-article__meta {
-  color: #2f6f68;
 }

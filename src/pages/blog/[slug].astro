@@ -16,6 +16,10 @@ export const getStaticPaths = (async () => {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const formattedDate = formatPostDate(post.data.date, post.data.dateEnd);
+
+const titleParts = post.data.title.split(/\s*[—–-]{1,2}\s*/).filter(Boolean);
+const titleMain = titleParts[0] ?? post.data.title;
+const titlePlace = titleParts.length > 1 ? titleParts.slice(1).join(' · ') : null;
 ---
 
 <BaseLayout
@@ -24,34 +28,44 @@ const formattedDate = formatPostDate(post.data.date, post.data.dateEnd);
   bodyClass="page-journey"
   fonts="serif-cormorant"
 >
-  <header class="post-topbar">
+  <div class="post-topbar">
     <Header currentPath={`/blog/${post.id}`} solid />
-  </header>
+  </div>
 
-  <article class:list={['post-article', { 'post-article--village': post.id === 'village' }]}>
+  <article class="post-article">
     {post.data.video ? (
-      <div class="post-article__video">
-        <video controls playsinline preload="metadata" poster={post.data.coverImage}>
-          <source src={post.data.video} type="video/mp4" />
-          你的瀏覽器不支援影片播放。
-        </video>
-        <div class="post-article__video-caption">
+      <div class="post-article__media">
+        <div class="post-article__video">
+          <video controls playsinline preload="metadata" poster={post.data.coverImage}>
+            <source src={post.data.video} type="video/mp4" />
+            你的瀏覽器不支援影片播放。
+          </video>
+        </div>
+        <div class="post-article__caption">
           <p class="post-article__meta">
             <span>{post.data.location}</span>
             <span>{formattedDate}</span>
           </p>
-          <h1>{post.data.title}</h1>
+          <h1>
+            <span class="post-article__title-main">{titleMain}</span>
+            {titlePlace && <span class="post-article__title-place">{titlePlace}</span>}
+          </h1>
         </div>
       </div>
     ) : (
-      <div class="post-article__hero">
-        <img src={post.data.coverImage} alt={post.data.title} />
-        <div class="post-article__hero-overlay">
+      <div class="post-article__media">
+        <div class="post-article__hero">
+          <img src={post.data.coverImage} alt={post.data.title} />
+        </div>
+        <div class="post-article__caption">
           <p class="post-article__meta">
             <span>{post.data.location}</span>
             <span>{formattedDate}</span>
           </p>
-          <h1>{post.data.title}</h1>
+          <h1>
+            <span class="post-article__title-main">{titleMain}</span>
+            {titlePlace && <span class="post-article__title-place">{titlePlace}</span>}
+          </h1>
         </div>
       </div>
     )}

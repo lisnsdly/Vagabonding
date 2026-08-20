@@ -43,6 +43,17 @@ const {
       />
     )}
     <ClientRouter fallback="swap" />
+    <script>
+      // 換頁後捲回頂部，避免從文章返回時仍看到 hero 下方內容
+      document.addEventListener('astro:after-swap', () => {
+        window.scrollTo(0, 0);
+      });
+      document.addEventListener('astro:page-load', () => {
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+      });
+    </script>
   </head>
   <body class={bodyClass}>
     <slot name="hero" />
