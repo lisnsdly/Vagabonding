@@ -6,32 +6,44 @@ html, body {
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* 深色底：換頁時避免白閃 */
+  background: #121820;
 }
 
 body {
   min-height: 100vh;
-  background: #edf0f2;
+  background: #121820;
   color: #2b2b2b;
   overflow-x: hidden;
 }
 
-/* 各頁內容區底色（呼應主題） */
-.page-index {
+/* 各頁內容區底色（呼應主題）— 只塗在內容區塊，hero 上方維持深色 */
+.page-index .page-content,
+.page-index .blog-list,
+.page-index .site-footer {
   background:
     linear-gradient(180deg, #e8eef3 0%, #f3f6f8 45%, #eef2f5 100%);
 }
 
-.page-home {
+.page-home .page-content,
+.page-home .home-dedication,
+.page-home .site-footer {
   background:
     linear-gradient(180deg, #e6ebf3 0%, #eef1f6 50%, #e8ecf4 100%);
 }
 
-.page-about {
+.page-about .page-content,
+.page-about .about-content,
+.page-about .site-footer {
   background:
     linear-gradient(180deg, #e9f0ea 0%, #f2f6f3 48%, #eaf1ec 100%);
 }
 
-.page-journey {
+.page-journey .page-content,
+.page-journey .journey-content,
+.page-journey .blog-list,
+.page-journey .post-article,
+.page-journey .site-footer {
   background:
     linear-gradient(180deg, #e8eef4 0%, #f2f5f8 50%, #e9eef3 100%);
 }
@@ -628,9 +640,9 @@ nav a:hover {
       "navleft navright";
     justify-items: stretch;
     align-items: center;
-    row-gap: 2px;
+    row-gap: 6px;
     column-gap: 0;
-    padding: 6px 10px 8px;
+    padding: 10px 14px 12px;
   }
 
   .nav-left {
@@ -647,27 +659,28 @@ nav a:hover {
 
   .nav-left ul {
     justify-content: flex-end;
-    padding-right: 6px;
+    padding-right: 10px;
   }
 
   .nav-right ul {
     justify-content: flex-start;
-    padding-left: 6px;
+    padding-left: 10px;
   }
 
   .nav-left ul,
   .nav-right ul {
-    gap: 12px;
+    gap: 18px;
     flex-wrap: nowrap;
   }
 
   nav a {
-    font-size: 14px;
-    letter-spacing: 0;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    padding: 6px 2px;
   }
 
   .logo img {
-    height: 52px;
+    height: 78px;
   }
 
   .background {
@@ -752,7 +765,7 @@ nav a:hover {
   }
 
   .post-article {
-    padding: 120px 16px 64px;
+    padding: 140px 16px 64px;
   }
 
   .post-article__hero-overlay {
@@ -788,20 +801,20 @@ nav a:hover {
 
 @media (max-width: 480px) {
   .container {
-    padding: 6px 8px 8px;
+    padding: 10px 12px 12px;
   }
 
   .nav-left ul,
   .nav-right ul {
-    gap: 8px;
+    gap: 14px;
   }
 
   nav a {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .logo img {
-    height: 46px;
+    height: 72px;
   }
 
   .index-hero-title .hero-line,
