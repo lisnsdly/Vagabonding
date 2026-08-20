@@ -1,0 +1,12 @@
+---
+import InstagramLink from './InstagramLink.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__row">
+    <p>&copy; {year} 浪遊 Vagabonding</p>
+    <InstagramLink variant="footer" showLabel />
+  </div>
+</footer>

@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const regions = [
+  { id: 'east-asia', label: '東亞' },
+  { id: 'southeast-asia', label: '東南亞' },
+  { id: 'europe', label: '歐洲' },
+  { id: 'middle-east', label: '中東' },
+  { id: 'africa', label: '非洲' },
+] as const;
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="旅途 · 浪遊 Vagabonding" bodyClass="page-journey" fonts="serif-cormorant">
+  <Fragment slot="hero">
+    <Hero bgClass="bg-journey" titleClass="about-hero-title">
+      <Header slot="header" currentPath="/journey" />
+      <h1>
+        <span class="hero-zh">旅途</span>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <span class="hero-en">Journeys</span>
+      </h1>
+    </Hero>
+  </Fragment>
+
+  <main class="page-content journey-content" role="main">
+    <div class="section-title">
+      <h2>分地區</h2>
+      <p>按地區瀏覽旅程紀錄</p>
+    </div>
+
+    {regions.map((region) => {
+      const regionPosts = posts.filter((post) => post.data.region === region.id);
+      return (
+        <section class="journey-region" id={region.id}>
+          <h3 class="journey-region__title">{region.label}</h3>
+          {regionPosts.length === 0 ? (
+            <p class="state-message">即將寫下這區的故事。</p>
+          ) : (
+            <div class="post-list">
+              {regionPosts.map((post) => (
+                <PostCard
+                  title={post.data.title}
+                  location={post.data.location}
+                  date={post.data.date}
+                  dateEnd={post.data.dateEnd}
+                  coverImage={post.data.coverImage}
+                  excerpt={post.data.excerpt}
+                  href={`/blog/${post.id}/`}
+                />
+              ))}
+            </div>
+          )}
+        </section>
+      );
+    })}
+  </main>
+</BaseLayout>

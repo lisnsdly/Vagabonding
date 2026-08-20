@@ -1,0 +1,32 @@
+---
+import { formatPostDate } from '../lib/formatDate';
+
+interface Props {
+  title: string;
+  location: string;
+  date: Date;
+  dateEnd?: Date;
+  coverImage: string;
+  excerpt?: string;
+  href: string;
+}
+
+const { title, location, date, dateEnd, coverImage, excerpt, href } = Astro.props;
+const formattedDate = formatPostDate(date, dateEnd);
+---
+
+<article class="post-card">
+  <a class="post-card__link" href={href}>
+    <div class="post-card__media">
+      <img src={coverImage} alt={title} loading="lazy" />
+    </div>
+    <div class="post-card__body">
+      <div class="post-card__meta">
+        <span class="tag-location">{location}</span>
+        <span class="tag-date">{formattedDate}</span>
+      </div>
+      <h3 class="post-card__title">{title}</h3>
+      {excerpt && <p class="post-card__excerpt">{excerpt}</p>}
+    </div>
+  </a>
+</article>

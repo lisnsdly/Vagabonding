@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="浪遊 Vagabonding" bodyClass="page-index">
+  <Fragment slot="hero">
+    <Hero bgClass="bg-main" titleClass="index-hero-title">
+      <Header slot="header" currentPath="/" />
+      <h1>
+        <span class="hero-line">
+          珍惜每次<span class="hero-accent">相遇</span>的點滴
+        </span>
+        <span class="hero-line">
+          享受每個<span class="hero-accent">浪遊</span>的瞬間
+        </span>
+        <span class="hero-ornament" aria-hidden="true">
+          <span class="hero-rule"></span>
+          <span class="hero-dot"></span>
+          <span class="hero-rule"></span>
+        </span>
+        <span class="hero-line hero-line--focus">
+          擁抱每刻<span class="hero-accent">未知</span>的當下
+        </span>
+      </h1>
+    </Hero>
+  </Fragment>
+
+  <main class="page-content blog-list" role="main">
+    <div class="section-title">
+      <h2>浪遊隨筆</h2>
+      <p>走過的地方，留下的故事</p>
+    </div>
+
+    {posts.length === 0 ? (
+      <p class="state-message">還沒有任何旅遊日記，快到 src/content/blog 新增一篇 Markdown 吧。</p>
+    ) : (
+      <div class="post-list">
+        {posts.map((post) => (
+          <PostCard
+            title={post.data.title}
+            location={post.data.location}
+            date={post.data.date}
+            dateEnd={post.data.dateEnd}
+            coverImage={post.data.coverImage}
+            excerpt={post.data.excerpt}
+            href={`/blog/${post.id}/`}
+          />
+        ))}
+      </div>
+    )}
+  </main>
+</BaseLayout>

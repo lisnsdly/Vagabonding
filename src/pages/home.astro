@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const homePosts = (await getCollection('blog'))
+  .filter((post) => post.data.featuredOnHome)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout
+  title="屋企 · 浪遊 Vagabonding"
+  bodyClass="page-home"
+  fonts="serif-cormorant"
+>
+  <Fragment slot="hero">
+    <Hero bgClass="bg-home" titleClass="home-hero-title">
+      <Header slot="header" currentPath="/home" />
+      <h1>
+        <span class="hero-zh">香港 <span class="hero-accent">鄉</span>港</span>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <span class="hero-en">Hong Kong <span class="hero-accent">Home</span> Kong</span>
+      </h1>
+    </Hero>
+  </Fragment>
+
+  <main class="page-content home-dedication" role="main">
+    <div class="home-dedication-layout">
+      <figure class="home-dedication-photo">
+        <img src="/img/home-link.jpg" alt="獅子山連線夜景，山下燈火與山上光點相映" />
+      </figure>
+
+      <div class="home-dedication-text">
+        <h2>致 我嘅香港</h2>
+        <span class="home-dedication-rule" aria-hidden="true"></span>
+        <p>唔理事情有幾困難 環境有幾亂<br />你都仲係我屋企</p>
+        <p class="home-dedication-closing">之前係 而家係 將來都係</p>
+      </div>
+    </div>
+
+    {homePosts.length > 0 && (
+      <section class="home-blog-list" aria-label="屋企相關文章">
+        <div class="post-list">
+          {homePosts.map((post) => (
+            <PostCard
+              title={post.data.title}
+              location={post.data.location}
+              date={post.data.date}
+              dateEnd={post.data.dateEnd}
+              coverImage={post.data.coverImage}
+              excerpt={post.data.excerpt}
+              href={`/blog/${post.id}/`}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+</BaseLayout>

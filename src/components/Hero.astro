@@ -1,0 +1,15 @@
+---
+interface Props {
+  bgClass?: string;
+  titleClass?: string;
+}
+
+const { bgClass = 'bg-main', titleClass = '' } = Astro.props;
+---
+
+<section class={`background ${bgClass}`}>
+  <slot name="header" />
+  <div class={`background-text ${titleClass}`.trim()}>
+    <slot />
+  </div>
+</section>

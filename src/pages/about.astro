@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout
+  title="關於我 · 浪遊 Vagabonding"
+  bodyClass="page-about"
+  fonts="serif-cormorant"
+>
+  <Fragment slot="hero">
+    <Hero bgClass="bg-about" titleClass="about-hero-title">
+      <Header slot="header" currentPath="/about" />
+      <h1>
+        <span class="hero-zh">筆者介紹</span>
+        <span class="hero-rule" aria-hidden="true"></span>
+        <span class="hero-en">About the Writer</span>
+      </h1>
+    </Hero>
+  </Fragment>
+
+  <main class="page-content about-content" role="main">
+    <div class="about-layout">
+      <figure class="about-photo">
+        <img src="/img/me.png" alt="站在岸邊望向遠方的我" />
+        <figcaption class="about-profile">
+          <h2 class="about-profile__name">Lily Wong</h2>
+          <p class="about-profile__identity">Child of God</p>
+          <span class="about-profile__rule" aria-hidden="true"></span>
+          <blockquote class="about-profile__verse">
+            <p>The Lord is my shepherd, I lack nothing.</p>
+            <cite>Psalms 23:1</cite>
+          </blockquote>
+        </figcaption>
+      </figure>
+
+      <div class="about-text">
+        <article class="about-block">
+          <h3 class="about-label">連結</h3>
+          <p>
+            從小在屏幕中窺探這個世界，到慢慢長大，回首才發現已然一一踏上昔日風聞的國度。對世界抱有強烈的好奇，珍惜每個相識相遇，重視人與人之間的連結。曾痛惜於每個別離，現在慢慢學習去珍惜每段相處的時光。若然離別無法避免，但願他日回首，你我皆能心頭一暖，回心微笑。
+          </p>
+        </article>
+
+        <article class="about-block">
+          <h3 class="about-label">熱誠</h3>
+          <p>
+            熱愛冒險，熱愛山野。山林教會了我永不言敗，只要一步一步專注腳下每步，終將會看到至高至美的風景。我不知道未來能走到哪裏，但願每次邁開腳步的時刻，我仍能夠勇往直前，選擇去探索這奇妙的世界。期待有一日，你我能在列國中相見，彼此分享這一路上的奇遇。
+          </p>
+        </article>
+
+        <article class="about-block">
+          <h3 class="about-label">文字</h3>
+          <p>
+            喜歡文字，因其滿載著温度，能在某個瞬間觸動人心，能讓不善言辭的人將千言萬語藏在那一筆一劃之間。時間或會沖刷掉那些經過的點滴，但文字會標刻每個活著的當下。願文字能築起人與人之間的橋樑，成為彼此間某段記憶的出口。
+          </p>
+        </article>
+
+        <article class="about-block about-block--closing">
+          <h3 class="about-label">浪游</h3>
+          <p>
+            浪游，人都是在世間流浪的客旅。在此紀錄這沿途的風光，感恩一路上遇見的每一位。來日方長，各位，還請多多指教。
+          </p>
+        </article>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
