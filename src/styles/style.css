@@ -16,6 +16,13 @@ body {
   overflow-x: hidden;
 }
 
+/* 關閉 View Transition 淡入淡出，避免換頁閃爍 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 /* 各頁內容區底色（呼應主題） */
 .page-index {
   background:

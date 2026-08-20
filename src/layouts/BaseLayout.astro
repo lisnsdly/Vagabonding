@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import Footer from '../components/Footer.astro';
 import '../styles/style.css';
 
@@ -41,6 +42,7 @@ const {
         rel="stylesheet"
       />
     )}
+    <ClientRouter fallback="swap" />
   </head>
   <body class={bodyClass}>
     <slot name="hero" />

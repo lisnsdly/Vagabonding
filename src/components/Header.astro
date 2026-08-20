@@ -32,14 +32,27 @@ const { currentPath = '/', solid = false } = Astro.props;
 </header>
 
 <script>
-  const header = document.querySelector('.site-header');
-  const hasHero = document.querySelector('.background');
+  function initHeaderScroll() {
+    const header = document.querySelector('.site-header');
+    const hasHero = document.querySelector('.background');
 
-  if (header && hasHero && !header.classList.contains('site-header--solid')) {
+    if (!header || !hasHero || header.classList.contains('site-header--solid')) {
+      return undefined;
+    }
+
     const onScroll = () => {
       header.classList.toggle('is-scrolled', window.scrollY > 80);
     };
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }
+
+  let cleanup = initHeaderScroll();
+
+  document.addEventListener('astro:page-load', () => {
+    cleanup?.();
+    cleanup = initHeaderScroll();
+  });
 </script>
