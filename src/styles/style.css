@@ -6,44 +6,33 @@ html, body {
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  /* 深色底：換頁時避免白閃 */
-  background: #121820;
+  background: #edf0f2;
 }
 
 body {
   min-height: 100vh;
-  background: #121820;
+  background: #edf0f2;
   color: #2b2b2b;
   overflow-x: hidden;
 }
 
-/* 各頁內容區底色（呼應主題）— 只塗在內容區塊，hero 上方維持深色 */
-.page-index .page-content,
-.page-index .blog-list,
-.page-index .site-footer {
+/* 各頁內容區底色（呼應主題） */
+.page-index {
   background:
     linear-gradient(180deg, #e8eef3 0%, #f3f6f8 45%, #eef2f5 100%);
 }
 
-.page-home .page-content,
-.page-home .home-dedication,
-.page-home .site-footer {
+.page-home {
   background:
     linear-gradient(180deg, #e6ebf3 0%, #eef1f6 50%, #e8ecf4 100%);
 }
 
-.page-about .page-content,
-.page-about .about-content,
-.page-about .site-footer {
+.page-about {
   background:
     linear-gradient(180deg, #e9f0ea 0%, #f2f6f3 48%, #eaf1ec 100%);
 }
 
-.page-journey .page-content,
-.page-journey .journey-content,
-.page-journey .blog-list,
-.page-journey .post-article,
-.page-journey .site-footer {
+.page-journey {
   background:
     linear-gradient(180deg, #e8eef4 0%, #f2f5f8 50%, #e9eef3 100%);
 }
