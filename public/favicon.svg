@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="jJ">
+  <defs>
+    <linearGradient id="peak" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2B6BDB"/>
+      <stop offset="100%" stop-color="#A85CF5"/>
+    </linearGradient>
+  </defs>
+  <!-- rounded tile -->
+  <rect x="1" y="1" width="30" height="30" rx="7" fill="#0C101C"/>
+  <!-- mountain range -->
+  <path
+    fill="#2B6BDB"
+    d="M3 26 L7 16 L11 21 L16 9 L21 18 L24 14 L29 26 Z"
+  />
+  <!-- base contour -->
+  <path
+    fill="#1C4AA8"
+    d="M3 26 C8 23.5 12 25 16 25 C22 25 26 23 29 26 L29 28 L3 28 Z"
+  />
+  <!-- brand gradient tip -->
+  <path fill="url(#peak)" d="M16 9 L14.2 13.5 L17.8 13.5 Z"/>
+</svg>
