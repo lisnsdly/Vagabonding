@@ -152,6 +152,32 @@ ul {
   background-image: var(--bg);
 }
 
+/* 整塊標題置中（以文字區塊中心對齊畫面中心，而非第一行） */
+.background-text-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.background-text {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: min(94vw, 980px);
+  margin: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+  pointer-events: auto;
+}
+
 
 /* 增加上方漸層，確保白字可讀 */
 .background::before {
@@ -503,18 +529,6 @@ body.menu-open {
   background: #fff;
 }
 
-.background-text {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #fff;
-  z-index: 2;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
 .background-text h1 {
   font-size: 42px;
   font-weight: 700;
@@ -526,8 +540,6 @@ body.menu-open {
 
 /* 首頁：浪遊金句 */
 .index-hero-title {
-  top: 48%;
-  left: 50%;
   max-width: min(94vw, 980px);
   padding: 36px 28px;
 }
@@ -624,8 +636,7 @@ body.menu-open {
 
 /* 屋企：香港／鄉港 標題 */
 .home-hero-title {
-  top: 42%;
-  left: 50%;
+  max-width: min(94vw, 900px);
 }
 
 .home-hero-title h1 {
@@ -699,8 +710,7 @@ body.menu-open {
 
 /* 關於我：筆者介紹 */
 .about-hero-title {
-  top: 45%;
-  left: 50%;
+  max-width: min(94vw, 900px);
 }
 
 .about-hero-title h1 {
@@ -911,23 +921,16 @@ body.menu-open {
   }
 
   .background-text {
-    left: 50%;
-    right: auto;
     width: 100%;
     max-width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
-    transform: translate(-50%, -50%);
     text-align: center;
   }
 
   .index-hero-title,
   .home-hero-title,
   .about-hero-title {
-    top: 52%;
-    left: 50%;
-    right: auto;
-    transform: translate(-50%, -50%);
     width: 100%;
     max-width: 100%;
     padding: 16px 20px;
@@ -948,7 +951,7 @@ body.menu-open {
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
-    font-size: clamp(20px, 5.2vw, 26px);
+    font-size: clamp(22px, 5.6vw, 28px);
     letter-spacing: 0.06em;
     text-indent: 0;
     padding-left: 0.06em;
@@ -957,7 +960,7 @@ body.menu-open {
   }
 
   .index-hero-title .hero-line--focus {
-    font-size: clamp(22px, 5.6vw, 28px);
+    font-size: clamp(24px, 6vw, 30px);
     font-weight: 700;
     letter-spacing: 0.08em;
     padding-left: 0.08em;
@@ -1100,13 +1103,13 @@ body.menu-open {
   }
 
   .index-hero-title .hero-line {
-    font-size: clamp(18px, 4.8vw, 22px);
+    font-size: clamp(20px, 5.2vw, 24px);
     letter-spacing: 0.05em;
     padding-left: 0.05em;
   }
 
   .index-hero-title .hero-line--focus {
-    font-size: clamp(20px, 5.2vw, 24px);
+    font-size: clamp(22px, 5.6vw, 26px);
     letter-spacing: 0.06em;
     padding-left: 0.06em;
   }
