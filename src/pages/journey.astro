@@ -11,6 +11,7 @@ const regions = [
   { id: 'europe', label: '歐洲' },
   { id: 'middle-east', label: '中東' },
   { id: 'africa', label: '非洲' },
+  { id: 'airport-adventures', label: '機場歷險' },
 ] as const;
 
 const posts = (await getCollection('blog')).sort(
@@ -38,11 +39,15 @@ const posts = (await getCollection('blog')).sort(
 
     {regions.map((region) => {
       const regionPosts = posts.filter((post) => post.data.region === region.id);
+      const emptyMessage =
+        region.id === 'airport-adventures'
+          ? '如每個告示牌背後一樣，敬請期待箇中故事！'
+          : '即將寫下這區的故事。';
       return (
         <section class="journey-region" id={region.id}>
           <h3 class="journey-region__title">{region.label}</h3>
           {regionPosts.length === 0 ? (
-            <p class="state-message">即將寫下這區的故事。</p>
+            <p class="state-message">{emptyMessage}</p>
           ) : (
             <div class="post-list">
               {regionPosts.map((post) => (

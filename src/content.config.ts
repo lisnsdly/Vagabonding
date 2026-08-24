@@ -15,6 +15,7 @@ const blog = defineCollection({
       'europe',
       'middle-east',
       'africa',
+      'airport-adventures',
     ]),
     excerpt: z.string().optional(),
     video: z.string().optional(),
