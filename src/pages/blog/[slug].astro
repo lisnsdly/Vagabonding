@@ -16,6 +16,10 @@ export const getStaticPaths = (async () => {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const formattedDate = formatPostDate(post.data.date, post.data.dateEnd);
+
+const titleParts = post.data.title.split(/\s*[—–-]{1,2}\s*/).filter(Boolean);
+const titleMain = titleParts[0] ?? post.data.title;
+const titlePlace = titleParts.length > 1 ? titleParts.slice(1).join(' · ') : null;
 ---
 
 <BaseLayout
@@ -40,9 +44,19 @@ const formattedDate = formatPostDate(post.data.date, post.data.dateEnd);
         <div class="post-article__caption">
           <p class="post-article__meta">
             <span>{post.data.location}</span>
+            <span class="post-article__meta-dot" aria-hidden="true"></span>
             <span>{formattedDate}</span>
           </p>
-          <h1>{post.data.title}</h1>
+          <h1>
+            <span class="post-article__title-main">{titleMain}</span>
+            {titlePlace ? (
+              <span class="post-article__title-place">
+                <span class="post-article__title-rule" aria-hidden="true"></span>
+                <span class="post-article__title-place-text">{titlePlace}</span>
+                <span class="post-article__title-rule" aria-hidden="true"></span>
+              </span>
+            ) : null}
+          </h1>
         </div>
       </div>
     ) : (
@@ -53,9 +67,19 @@ const formattedDate = formatPostDate(post.data.date, post.data.dateEnd);
         <div class="post-article__caption">
           <p class="post-article__meta">
             <span>{post.data.location}</span>
+            <span class="post-article__meta-dot" aria-hidden="true"></span>
             <span>{formattedDate}</span>
           </p>
-          <h1>{post.data.title}</h1>
+          <h1>
+            <span class="post-article__title-main">{titleMain}</span>
+            {titlePlace ? (
+              <span class="post-article__title-place">
+                <span class="post-article__title-rule" aria-hidden="true"></span>
+                <span class="post-article__title-place-text">{titlePlace}</span>
+                <span class="post-article__title-rule" aria-hidden="true"></span>
+              </span>
+            ) : null}
+          </h1>
         </div>
       </div>
     )}

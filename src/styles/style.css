@@ -1046,12 +1046,26 @@ body.menu-open {
   }
 
   .post-article__caption {
-    margin-top: 18px;
+    margin-top: 22px;
   }
 
-  .post-article__caption h1 {
-    letter-spacing: 0.04em;
+  .post-article__title-main {
+    letter-spacing: 0.06em;
     font-size: clamp(24px, 6.5vw, 30px);
+  }
+
+  .post-article__title-place {
+    gap: 10px;
+  }
+
+  .post-article__title-place-text {
+    letter-spacing: 0.18em;
+    text-indent: 0.18em;
+    font-size: clamp(18px, 4.8vw, 22px);
+  }
+
+  .post-article__title-rule {
+    width: 20px;
   }
 
   .post-article__body.prose {
@@ -1161,7 +1175,7 @@ body.menu-open {
   margin: 0;
   position: sticky;
   top: 28px;
-  padding: 12px 12px 22px;
+  padding: 12px 12px 18px;
   border-radius: 20px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(244, 249, 245, 0.92) 100%);
@@ -1177,7 +1191,7 @@ body.menu-open {
 }
 
 .about-profile {
-  padding: 22px 10px 4px;
+  padding: 20px 12px 6px;
   text-align: center;
   font-family: "Cormorant Garamond", Georgia, serif;
 }
@@ -1196,8 +1210,8 @@ body.menu-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin: 10px 0 0;
+  gap: 12px;
+  margin: 12px 0 0;
   color: #5f7a6a;
   font-size: 15px;
   font-style: italic;
@@ -1219,7 +1233,7 @@ body.menu-open {
   display: block;
   width: 26px;
   height: 26px;
-  margin: 20px auto 18px;
+  margin: 18px auto 16px;
   position: relative;
   background: radial-gradient(circle at center, #83a28d 0 2.5px, transparent 2.5px);
 }
@@ -1250,7 +1264,7 @@ body.menu-open {
 }
 
 .about-profile__verse p {
-  margin: 0 auto 12px;
+  margin: 0 auto 10px;
   max-width: 270px;
   font-size: 18px;
   font-style: italic;
@@ -1588,13 +1602,13 @@ body.menu-open {
 }
 
 .post-article__media {
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
 .post-article__hero {
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 18px 40px rgba(20, 24, 30, 0.14);
+  box-shadow: 0 20px 48px rgba(20, 24, 30, 0.12);
 }
 
 .post-article__hero img {
@@ -1605,28 +1619,71 @@ body.menu-open {
 }
 
 .post-article__caption {
-  margin-top: 22px;
+  margin-top: 28px;
+  text-align: center;
 }
 
 .post-article__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 16px;
-  margin: 0 0 12px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 12px;
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   color: #2f6f68;
+}
+
+.post-article__meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #7aa39a;
+  flex-shrink: 0;
 }
 
 .post-article__caption h1 {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.post-article__title-main {
   font-family: "Noto Serif HK", "Songti TC", serif;
   font-size: clamp(28px, 4vw, 40px);
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   line-height: 1.35;
   color: #1f2a3a;
+}
+
+.post-article__title-place {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  max-width: 100%;
+}
+
+.post-article__title-rule {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(47, 111, 104, 0.55), transparent);
+  flex-shrink: 0;
+}
+
+.post-article__title-place-text {
+  font-family: "Noto Serif HK", "Songti TC", serif;
+  font-size: clamp(20px, 2.6vw, 26px);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  color: #4a6570;
 }
 
 .post-article__body.prose {
