@@ -1049,14 +1049,9 @@ body.menu-open {
     margin-top: 18px;
   }
 
-  .post-article__title-main {
+  .post-article__caption h1 {
     letter-spacing: 0.04em;
     font-size: clamp(24px, 6.5vw, 30px);
-  }
-
-  .post-article__title-place {
-    letter-spacing: 0.14em;
-    font-size: clamp(16px, 4.2vw, 18px);
   }
 
   .post-article__body.prose {
@@ -1626,26 +1621,12 @@ body.menu-open {
 
 .post-article__caption h1 {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.post-article__title-main {
   font-family: "Noto Serif HK", "Songti TC", serif;
   font-size: clamp(28px, 4vw, 40px);
   font-weight: 700;
   letter-spacing: 0.08em;
   line-height: 1.35;
   color: #1f2a3a;
-}
-
-.post-article__title-place {
-  font-family: "Noto Serif HK", "Songti TC", serif;
-  font-size: clamp(18px, 2.4vw, 22px);
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  color: #5a6570;
 }
 
 .post-article__body.prose {
