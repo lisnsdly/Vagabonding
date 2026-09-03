@@ -4,10 +4,9 @@ import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import PostCard from '../components/PostCard.astro';
 import { getCollection } from 'astro:content';
+import { sortByLatestCreated } from '../utils/blogPosts';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const posts = sortByLatestCreated(await getCollection('blog')).slice(0, 2);
 ---
 
 <BaseLayout title="浪遊 Vagabonding" bodyClass="page-index">

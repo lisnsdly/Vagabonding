@@ -1756,6 +1756,16 @@ body.menu-open {
   object-fit: contain;
 }
 
+/* 內文英文段落 */
+.post-article__body.prose .prose-en {
+  font-family: "Cormorant Garamond", Georgia, "Palatino Linotype", serif;
+  font-size: 1.05em;
+  line-height: 1.85;
+  color: #333;
+  text-align: left;
+  margin: 0 0 1.2em;
+}
+
 .post-article__back {
   margin-top: 40px;
 }

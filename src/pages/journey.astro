@@ -8,15 +8,16 @@ import { getCollection } from 'astro:content';
 const regions = [
   { id: 'east-asia', label: '東亞' },
   { id: 'southeast-asia', label: '東南亞' },
+  { id: 'south-asia', label: '南亞' },
   { id: 'europe', label: '歐洲' },
   { id: 'middle-east', label: '中東' },
-  { id: 'africa', label: '非洲' },
+  { id: 'africa', label: '北非' },
   { id: 'airport-adventures', label: '機場歷險' },
 ] as const;
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.featuredOnHome)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <BaseLayout title="旅途 · 浪遊 Vagabonding" bodyClass="page-journey" fonts="serif-cormorant">

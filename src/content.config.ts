@@ -12,6 +12,7 @@ const blog = defineCollection({
     region: z.enum([
       'east-asia',
       'southeast-asia',
+      'south-asia',
       'europe',
       'middle-east',
       'africa',

@@ -1,7 +1,6 @@
 ---
 title: 一週的鄉郊故事 —— 程沖村
-date: 2026-08-01
-dateEnd: 2026-08-08
+date: 2026-08
 location: 中國 · 安徽省
 coverImage: /img/village.jpg
 region: east-asia
