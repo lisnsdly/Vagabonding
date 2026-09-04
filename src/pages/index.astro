@@ -6,7 +6,7 @@ import PostCard from '../components/PostCard.astro';
 import { getCollection } from 'astro:content';
 import { sortByLatestCreated } from '../utils/blogPosts';
 
-const posts = sortByLatestCreated(await getCollection('blog')).slice(0, 2);
+const posts = sortByLatestCreated(await getCollection('blog')).slice(0, 3);
 ---
 
 <BaseLayout title="浪遊 Vagabonding" bodyClass="page-index">

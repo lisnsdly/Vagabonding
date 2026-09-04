@@ -1,5 +1,5 @@
 ---
-title: 斯里蘭卡服務團
+title: 木工天地 -- 斯里蘭卡服務團
 date: 2026-06
 published: 2026-09-02T12:00:00
 location: 斯里蘭卡

@@ -29,10 +29,10 @@ excerpt: 一句話摘要，會顯示在首頁卡片。
 正文寫在這裡……
 ```
 
-`date` 是旅程時間（只顯示年月）；`published` 是文章上線時間，用來決定首頁「最新兩篇」。省略 `published` 時會改用 `date`。
+`date` 是旅程時間（只顯示年月）；`published` 是文章上線時間，用來決定首頁「最新三篇」。省略 `published` 時會改用 `date`。
 
 `region` 可選：`east-asia` | `southeast-asia` | `south-asia` | `europe` | `middle-east` | `africa`
 
-香港／屋企專屬文章：在 frontmatter 加上 `featuredOnHome: true`，文章會出現在「屋企」頁，不會出現在「旅途」；若屬於最新兩篇，仍會出現在首頁。
+香港／屋企專屬文章：在 frontmatter 加上 `featuredOnHome: true`，文章會出現在「屋企」頁，不會出現在「旅途」；若屬於最新三篇，仍會出現在首頁。
 
 封面圖放在 `public/img/`，路徑用 `/img/檔名.jpg`。
