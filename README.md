@@ -33,6 +33,6 @@ excerpt: 一句話摘要，會顯示在首頁卡片。
 
 `region` 可選：`east-asia` | `southeast-asia` | `south-asia` | `europe` | `middle-east` | `africa`
 
-香港／屋企專屬文章：在 frontmatter 加上 `featuredOnHome: true`，文章只會出現在「屋企」頁，不會出現在「旅途」。
+香港／屋企專屬文章：在 frontmatter 加上 `featuredOnHome: true`，文章會出現在「屋企」頁，不會出現在「旅途」；若屬於最新兩篇，仍會出現在首頁。
 
 封面圖放在 `public/img/`，路徑用 `/img/檔名.jpg`。
