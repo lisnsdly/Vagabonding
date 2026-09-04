@@ -1519,9 +1519,6 @@ body.menu-open {
 .post-card__media img {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: center;
   display: block;
 }
 
@@ -1610,9 +1607,6 @@ body.menu-open {
 .post-article__hero img {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: center;
   display: block;
 }
 
