@@ -1,6 +1,7 @@
 ---
 title: 法國 Workcamp & First Solo Trip
 date: 2024-06
+published: 2026-09-02T18:00:00
 location: 法國 · 富拉 & 波爾多
 coverImage: /img/france-cover.jpg
 region: europe

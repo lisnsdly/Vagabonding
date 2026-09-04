@@ -1,6 +1,7 @@
 ---
 title: 首踏中東--約旦篇
 date: 2022-07
+published: 2026-09-03
 location: 約旦
 coverImage: /img/jordan-cover.jpg
 region: middle-east

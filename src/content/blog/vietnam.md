@@ -1,6 +1,7 @@
 ---
 title: 越南服務團
 date: 2023-06
+published: 2026-09-02T20:00:00
 location: 越南 · 胡志明市及頭頓市
 coverImage: /img/vietnam-cover.jpg
 region: southeast-asia

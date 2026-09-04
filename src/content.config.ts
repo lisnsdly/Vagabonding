@@ -7,6 +7,8 @@ const blog = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     dateEnd: z.coerce.date().optional(),
+    /** When this post was added to the site; used for homepage “latest” sorting. */
+    published: z.coerce.date().optional(),
     location: z.string(),
     coverImage: z.string(),
     region: z.enum([

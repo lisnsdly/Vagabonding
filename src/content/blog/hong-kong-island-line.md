@@ -1,6 +1,7 @@
 ---
 title: 忽發奇想的港島線全走
 date: 2026-08
+published: 2026-08-15
 location: 香港 · 港島線
 coverImage: /img/HK-island-bg.jpg
 region: east-asia

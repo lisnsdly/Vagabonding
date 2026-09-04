@@ -19,6 +19,7 @@ npm run preview  # 預覽正式建置
 ---
 title: 大阪的第一碗拉麵
 date: 2026-01-20
+published: 2026-09-04
 location: 日本 · 大阪
 coverImage: /img/main.jpg
 region: east-asia
@@ -27,6 +28,8 @@ excerpt: 一句話摘要，會顯示在首頁卡片。
 
 正文寫在這裡……
 ```
+
+`date` 是旅程時間（只顯示年月）；`published` 是文章上線時間，用來決定首頁「最新兩篇」。省略 `published` 時會改用 `date`。
 
 `region` 可選：`east-asia` | `southeast-asia` | `south-asia` | `europe` | `middle-east` | `africa`
 
