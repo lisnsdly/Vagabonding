@@ -1,5 +1,5 @@
 ---
-title: 忽發奇想的港島線全走 -- 柴灣到堅尼地城
+title: 柴灣到堅尼地城
 date: 2026-08
 published: 2026-08-15
 location: 香港 · 港島線
@@ -7,7 +7,7 @@ coverImage: /img/HK-island-bg.jpg
 region: east-asia
 featuredOnHome: true
 video: /video/island-line.mp4
-excerpt: 右手手腕扭傷後，忽然心血來潮，決定用雙腳走完港島線。大雨成為一路上最響亮的伴奏曲。
+excerpt: 忽發奇想的港島線全走
 ---
 
 最近因為右手手腕扭傷，已經有幾個星期，但仍然未能康復。可能因為中途仍不斷使用右手，導致傷勢更加嚴重，未能自然痊癒。因著無法完全使用右手的限制，有很多的活動無辦法進行。每天想著希望彈結他、打鼓、彈琴、行山、踏單車等，然而為了手腕著想，無奈地只好把這些都一一放在旁。
