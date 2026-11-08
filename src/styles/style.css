@@ -1011,36 +1011,18 @@ body.menu-open {
 
   .section-title h2 {
     letter-spacing: 0.12em;
-    font-size: clamp(20px, 5.2vw, 24px);
   }
 
   .section-title p {
     letter-spacing: 0.04em;
-    font-size: 13px;
   }
 
   .journey-region__title {
     letter-spacing: 0.12em;
-    font-size: 18px;
   }
 
   .post-card__body {
-    padding: 16px 14px;
-  }
-
-  .post-card__meta {
-    font-size: 12px;
-    gap: 10px;
-  }
-
-  .post-card__title {
-    font-size: 17px;
-    line-height: 1.4;
-  }
-
-  .post-card__excerpt {
-    font-size: 13px;
-    line-height: 1.6;
+    padding: 18px 16px;
   }
 
   .post-article {
@@ -1840,8 +1822,8 @@ body.menu-open {
   background: #111;
 }
 
-/* 手機字級必須放在檔案最後，否則會被前面的桌面樣式蓋掉 */
-@media (max-width: 800px) {
+/* 僅手機縮小字級；勿用 800px，否則窄視窗電腦也會變小 */
+@media (max-width: 600px) {
   .section-title h2 {
     letter-spacing: 0.12em;
     font-size: clamp(20px, 5.2vw, 24px);
