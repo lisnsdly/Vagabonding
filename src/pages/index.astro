@@ -9,7 +9,7 @@ import { sortByLatestCreated } from '../utils/blogPosts';
 const posts = sortByLatestCreated(await getCollection('blog')).slice(0, 3);
 ---
 
-<BaseLayout title="浪遊 Vagabonding" bodyClass="page-index">
+<BaseLayout title="浪遊 Vagabonding" bodyClass="page-index" heroImage="/img/main.jpg">
   <Fragment slot="hero">
     <Hero bgClass="bg-main" titleClass="index-hero-title">
       <Header slot="header" currentPath="/" />

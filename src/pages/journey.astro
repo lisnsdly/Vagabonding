@@ -20,7 +20,12 @@ const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="旅途 · 浪遊 Vagabonding" bodyClass="page-journey" fonts="serif-cormorant">
+<BaseLayout
+  title="旅途 · 浪遊 Vagabonding"
+  bodyClass="page-journey"
+  fonts="serif-cormorant"
+  heroImage="/img/journey-bg.jpg"
+>
   <Fragment slot="hero">
     <Hero bgClass="bg-journey" titleClass="about-hero-title">
       <Header slot="header" currentPath="/journey" />

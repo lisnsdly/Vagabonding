@@ -8,12 +8,15 @@ interface Props {
   description?: string;
   bodyClass?: string;
   fonts?: 'default' | 'serif-cormorant';
+  /** Hero 背景圖；提供時會預載，避免換頁／重整時先露出空白 */
+  heroImage?: string;
 }
 
 const {
   title = '浪遊 Vagabonding',
   description = '走過的地方，留下的故事',
   bodyClass = 'page-index',
+  heroImage,
 } = Astro.props;
 ---
 
@@ -31,6 +34,11 @@ const {
     <style is:inline>
       html, body { background: #edf0f2; }
     </style>
+    {heroImage && <link rel="preload" as="image" href={heroImage} fetchpriority="high" />}
+    <!-- 預先抓其他頁的 hero 圖，客戶端換頁時不會再閃白 -->
+    {['/img/main.jpg', '/img/home.jpg', '/img/about-bg.jpg', '/img/journey-bg.jpg']
+      .filter((src) => src !== heroImage)
+      .map((src) => <link rel="prefetch" as="image" href={src} />)}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

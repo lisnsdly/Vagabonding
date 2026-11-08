@@ -146,6 +146,8 @@ ul {
   /* 100dvh：隨瀏覽器 UI 伸縮，避免手機上露出 hero 下方內容 */
   min-height: 100vh;
   min-height: 100dvh;
+  /* 圖片載入前的深色底，避免整屏閃白 */
+  background-color: #1b2535;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
