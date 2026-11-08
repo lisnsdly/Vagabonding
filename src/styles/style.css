@@ -18,22 +18,22 @@ body {
 }
 
 /* 換頁：固定淡入淡出，避免硬切閃白 */
-@keyframes vt-fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
 @keyframes vt-fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
+/*
+  切勿對 root 快照使用 object-fit: cover。
+  手機網址列伸縮時 Snapshot Containing Block ≠ 可視區，cover 會把整頁
+  （含 hero 圖）縮放裁切，看起來就像圖片上下跳再撐滿螢幕。
+*/
 ::view-transition-old(root),
 ::view-transition-new(root) {
   mix-blend-mode: normal;
-  height: 100%;
   width: 100%;
-  object-fit: cover;
+  height: 100%;
+  object-fit: fill;
   overflow: clip;
 }
 
@@ -44,15 +44,33 @@ body {
 ::view-transition-old(root) {
   animation: none;
   opacity: 1;
+  z-index: 1;
 }
 
 ::view-transition-new(root) {
-  animation: 320ms ease-out both vt-fade-in;
+  animation: 280ms ease-out both vt-fade-in;
+  z-index: 2;
 }
 
 ::view-transition-group(root) {
-  /* 過渡層底色改深色，萬一露出也不刺眼 */
+  /* 關閉預設的位置／尺寸 morph，只留透明度淡入 */
+  animation: none !important;
   background-color: #1b2535;
+}
+
+/* 手機換頁遮罩：蓋住 DOM 替換瞬間，再淡出，避免 VT morph 把圖上下拉 */
+#page-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #1b2535;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+#page-veil.is-on {
+  opacity: 1;
 }
 
 /* 客戶端換頁時不要重播標題入場，以免看起來像二次閃爍 */
@@ -66,6 +84,10 @@ html[data-vt-nav] .about-hero-title h1 {
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none !important;
+  }
+
+  #page-veil {
+    transition: none;
   }
 
   .index-hero-title h1,
