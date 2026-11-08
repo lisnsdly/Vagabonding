@@ -785,22 +785,12 @@ body.menu-open {
 .home-dedication-photo {
   margin: 0;
   overflow: hidden;
-  border-radius: 14px;
-  box-shadow: 0 18px 44px rgba(12, 18, 32, 0.22);
 }
 
 .home-dedication-photo img {
   width: 100%;
   height: auto;
   display: block;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  object-position: center bottom;
-  transition: transform 0.6s ease;
-}
-
-.home-dedication-photo:hover img {
-  transform: scale(1.03);
 }
 
 .home-dedication-text {
@@ -868,10 +858,6 @@ body.menu-open {
 
   .home-dedication-text p {
     letter-spacing: 0.04em;
-  }
-
-  .home-dedication-photo img {
-    aspect-ratio: 16 / 10;
   }
 }
 
