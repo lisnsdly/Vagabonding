@@ -11,7 +11,7 @@ html {
 
 body {
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100svh;
   background: #edf0f2;
   color: #2b2b2b;
   overflow-x: hidden;
@@ -157,9 +157,15 @@ ul {
 
 .background {
   position: relative;
-  /* 100dvh：隨瀏覽器 UI 伸縮，避免手機上露出 hero 下方內容 */
+  /*
+    手機換頁時網址列會伸縮，100dvh 跟著變 → background-size:cover 的裁切會上下跳。
+    改用穩定的 100svh，並以 JS 鎖定的 --app-vh（僅在初次載入／轉螢幕時更新）為準。
+  */
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100svh;
+  min-height: var(--app-vh, 100svh);
+  height: var(--app-vh, 100svh);
+  overflow: clip;
   /* 圖片載入前的深色底，避免整屏閃白 */
   background-color: #1b2535;
   background-position: center;

@@ -56,12 +56,29 @@ const {
     </noscript>
     <ClientRouter fallback="animate" />
     <script>
+      // 鎖定首屏高度：只在初次量測與轉螢幕時更新，換頁／網址列伸縮時不變，
+      // 避免 hero 的 cover 背景在手機上上下跳再撐滿。
+      let appVh = 0;
+      const applyAppVh = () => {
+        if (!appVh) appVh = window.innerHeight;
+        document.documentElement.style.setProperty('--app-vh', `${appVh}px`);
+      };
+      const measureAppVh = () => {
+        appVh = window.innerHeight;
+        applyAppVh();
+      };
+      measureAppVh();
+      window.addEventListener('orientationchange', () => {
+        setTimeout(measureAppVh, 350);
+      });
+
       // 客戶端換頁：略過標題入場動畫，並捲回頂部。
       // 注意：Astro 換頁時會重設 <html> 的屬性，所以要在 after-swap 之後再標記，
       // 否則標題每次都重播 1.1s 淡入，看起來像頁面閃了兩次。
       document.addEventListener('astro:after-swap', () => {
         document.documentElement.dataset.vtNav = '';
-        window.scrollTo(0, 0);
+        applyAppVh();
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       });
       document.addEventListener('astro:page-load', () => {
         if ('scrollRestoration' in history) {
