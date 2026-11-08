@@ -41,17 +41,26 @@ const {
       .map((src) => <link rel="prefetch" as="image" href={src} />)}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- 字型樣式表不阻擋首次繪製：先以 print 載入，載完再套用；慢網路下才不會整頁空白幾秒 -->
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <ClientRouter fallback="animate" />
     <script>
-      // 客戶端換頁：標記後略過標題入場動畫，並捲回頂部
-      document.addEventListener('astro:before-preparation', () => {
-        document.documentElement.dataset.vtNav = '';
-      });
+      // 客戶端換頁：略過標題入場動畫，並捲回頂部。
+      // 注意：Astro 換頁時會重設 <html> 的屬性，所以要在 after-swap 之後再標記，
+      // 否則標題每次都重播 1.1s 淡入，看起來像頁面閃了兩次。
       document.addEventListener('astro:after-swap', () => {
+        document.documentElement.dataset.vtNav = '';
         window.scrollTo(0, 0);
       });
       document.addEventListener('astro:page-load', () => {

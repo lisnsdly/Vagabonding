@@ -37,17 +37,22 @@ body {
   overflow: clip;
 }
 
+/*
+  舊頁保持不透明墊底、新頁在上方淡入。
+  若兩者同時淡出／淡入，中途兩層都半透明，會露出底色而閃一下白。
+*/
 ::view-transition-old(root) {
-  animation: 280ms ease-out both vt-fade-out;
+  animation: none;
+  opacity: 1;
 }
 
 ::view-transition-new(root) {
-  animation: 320ms ease-in both vt-fade-in;
+  animation: 320ms ease-out both vt-fade-in;
 }
 
 ::view-transition-group(root) {
-  /* 過渡層底色與站點一致，避免露出瀏覽器預設白底 */
-  background-color: #edf0f2;
+  /* 過渡層底色改深色，萬一露出也不刺眼 */
+  background-color: #1b2535;
 }
 
 /* 客戶端換頁時不要重播標題入場，以免看起來像二次閃爍 */
@@ -99,15 +104,24 @@ ul {
 /* ============
    background
 =============== */
-.bg-main { --bg: url('/img/main.jpg'); }
+/* --bg-lqip：內嵌的 32px 模糊縮圖（<0.5KB），大圖未到前先鋪上，不會黑屏或白屏 */
+.bg-main {
+  --bg: url('/img/main.jpg');
+  --bg-lqip: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAYACADASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFBAL/xAAgEAACAgICAgMAAAAAAAAAAAABAwACESEEBQZBEzJR/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAEEA//EABsRAQEAAgMBAAAAAAAAAAAAAAEAAgMRMUEh/9oADAMBAAIRAxEAPwCgtQxGhQkBXfV90sJs4/dotfFyRJXZmeVRpHpqZUPyJaoYmTm95xVfW2ZPv5Egj3A2ZvkOkO2lUcsDe50OQkHdYQlSWJlxJf8AEzYkx67VvkDUIRE8vt//2Q==');
+}
 .bg-home {
   --bg: url('/img/home.jpg');
+  --bg-lqip: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAYACADASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAUDBAECBv/EACEQAAICAgAHAQAAAAAAAAAAAAECAAMEEQUGEyEiMUEy/8QAGAEAAwEBAAAAAAAAAAAAAAAAAgMEAAH/xAAZEQEBAQEBAQAAAAAAAAAAAAAAAgEDERL/2gAMAwEAAhEDEQA/AEi4Rb5Njw86/JlevmR1bTULHNHMOA9XnWVeXZ1kj4omtwSvyUrKSp9TocjidFikrV2+RFl5RZjpNQd6QKZrCYmZWxl9GEJIcnOba1XTLdpH131oncITnjP/2Q==');
   background-size: cover;
   background-position: center bottom;
 }
-.bg-about { --bg: url('/img/about-bg.jpg'); }
+.bg-about {
+  --bg: url('/img/about-bg.jpg');
+  --bg-lqip: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAYACADASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAUBAgMG/8QAJBAAAgIBAgUFAAAAAAAAAAAAAQIAAxEEBhIUMUFhFiEycYH/xAAXAQADAQAAAAAAAAAAAAAAAAABAgQF/8QAHREAAgEEAwAAAAAAAAAAAAAAAAECERMhQQMEMf/aAAwDAQACEQMRAD8Af8tntDlfEUncDnouPyQdwOnyYSldmL2TPgaGjaXxKHTeIu9QngySuJnZuIKM5WNdb8BaRzlJuPVziFgVjm18/UITLpkqrgsL9NXUFZS3v3M0NmlZl4FhCJJbqFSZ/9k=');
+}
 .bg-journey {
   --bg: url('/img/journey-bg.jpg');
+  --bg-lqip: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAAYACADASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEEAgP/xAAjEAABBAEDBAMAAAAAAAAAAAABAAIDBBEFFEESITFRIlKR/8QAGQEAAgMBAAAAAAAAAAAAAAAAAgUAAQME/8QAGREAAwEBAQAAAAAAAAAAAAAAAAECAxIT/9oADAMBAAIRAxEAPwCV0J9IERHCv3FM9y7CW4pcOJTn0kVcUcI48cKqNiQtVWnw78WXarVjdhrXOQvWS1nTIpYa1WPrnkGfqFLa1Oo1rdpF35yhC4umaKUSv1aWT4nDR6ATZa8ZAQhSaYTlH//Z');
   background-position: center 40%;
 }
 
@@ -151,7 +165,8 @@ ul {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: var(--bg);
+  /* 大圖在上、模糊縮圖在下；大圖是漸進式 JPEG，會由糊到清，不會突然跳出 */
+  background-image: var(--bg), var(--bg-lqip);
 }
 
 /* 整塊標題置中（以文字區塊中心對齊畫面中心，而非第一行） */
