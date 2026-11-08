@@ -53,24 +53,8 @@ body {
 }
 
 ::view-transition-group(root) {
-  /* 關閉預設的位置／尺寸 morph，只留透明度淡入 */
+  /* 關閉預設的位置／尺寸 morph，只留透明度淡入；舊頁全程不透明墊底，不需底色 */
   animation: none !important;
-  background-color: #1b2535;
-}
-
-/* 手機換頁遮罩：蓋住 DOM 替換瞬間，再淡出，避免 VT morph 把圖上下拉 */
-#page-veil {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: #1b2535;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 200ms ease;
-}
-
-#page-veil.is-on {
-  opacity: 1;
 }
 
 /* 客戶端換頁時不要重播標題入場，以免看起來像二次閃爍 */
@@ -84,10 +68,6 @@ html[data-vt-nav] .about-hero-title h1 {
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none !important;
-  }
-
-  #page-veil {
-    transition: none;
   }
 
   .index-hero-title h1,
@@ -180,13 +160,11 @@ ul {
 .background {
   position: relative;
   /*
-    手機換頁時網址列會伸縮，100dvh 跟著變 → background-size:cover 的裁切會上下跳。
-    改用穩定的 100svh，並以 JS 鎖定的 --app-vh（僅在初次載入／轉螢幕時更新）為準。
+    手機換頁時網址列會伸縮：dvh 會跟著變 → 圖上下跳；svh 太矮 → 下方露一條。
+    100lvh = 網址列收起時的高度，固定不變且永遠蓋滿整個螢幕。
   */
-  min-height: 100vh;
-  min-height: 100svh;
-  min-height: var(--app-vh, 100svh);
-  height: var(--app-vh, 100svh);
+  height: 100vh;
+  height: 100lvh;
   overflow: clip;
   /* 圖片載入前的深色底，避免整屏閃白 */
   background-color: #1b2535;
