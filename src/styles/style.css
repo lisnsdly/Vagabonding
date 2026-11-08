@@ -828,7 +828,7 @@ body.menu-open {
   width: 100%;
   height: auto;
   display: block;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1024 / 571;
   object-fit: cover;
   object-position: center;
   transition: transform 0.6s ease;
@@ -903,10 +903,6 @@ body.menu-open {
 
   .home-dedication-text p {
     letter-spacing: 0.04em;
-  }
-
-  .home-dedication-photo img {
-    aspect-ratio: 16 / 10;
   }
 }
 
