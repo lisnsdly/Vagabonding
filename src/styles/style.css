@@ -1388,6 +1388,13 @@ body.menu-open {
   border-top: 1px solid rgba(80, 90, 100, 0.12);
 }
 
+.site-footer__row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 .site-footer p {
   margin: 0;
 }
@@ -1443,10 +1450,11 @@ body.menu-open {
 
 .ig-link--footer {
   color: #5c646e;
-  padding: 8px 14px;
+  padding: 6px;
   border-radius: 999px;
   border: 1px solid rgba(80, 90, 100, 0.16);
   background: rgba(255, 255, 255, 0.55);
+  line-height: 0;
 }
 
 .ig-link--footer:hover {
@@ -1456,8 +1464,8 @@ body.menu-open {
 }
 
 .ig-link--footer .ig-link__icon {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 /* ================================
