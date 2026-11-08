@@ -70,6 +70,17 @@ const {
         window.matchMedia('(max-width: 800px), (hover: none) and (pointer: coarse)').matches;
 
       let ghostPending = false;
+      // 是否從手機選單點連結：若是，複製層要保留「選單開著」的畫面，
+      // 這樣是從深色選單直接溶接到新頁，而不是先閃回舊頁再換頁。
+      let navFromMenu = false;
+      document.addEventListener(
+        'click',
+        (event) => {
+          const target = event.target as Element | null;
+          navFromMenu = !!target?.closest('.mobile-menu a');
+        },
+        true,
+      );
 
       const buildGhost = () => {
         document.getElementById(OVERLAY_ID)?.remove();
@@ -112,6 +123,17 @@ const {
           sheet.appendChild(copy);
         }
         ghost.appendChild(sheet);
+
+        if (navFromMenu) {
+          const menu = sheet.querySelector('.mobile-menu');
+          const header = sheet.querySelector('.site-header');
+          const toggle = sheet.querySelector('.nav-toggle');
+          menu?.removeAttribute('hidden');
+          menu?.classList.add('is-open');
+          header?.classList.add('is-menu-open');
+          toggle?.setAttribute('aria-expanded', 'true');
+        }
+
         // 掛在 <html> 下而非 <body>，Astro 換頁時替換 body 才不會把它一起換掉
         document.documentElement.appendChild(ghost);
         return ghost;
@@ -135,6 +157,7 @@ const {
 
         if (!ghostPending) return;
         ghostPending = false;
+        navFromMenu = false;
         const ghost = document.getElementById(OVERLAY_ID);
         if (!ghost) return;
         // 等新頁完成一次繪製再開始淡出
