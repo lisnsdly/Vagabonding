@@ -589,7 +589,7 @@ body.menu-open {
 .index-hero-title .hero-line {
   display: block;
   font-family: "Noto Serif HK", "Songti TC", "PMingLiU", serif;
-  font-size: clamp(28px, 4.2vw, 48px);
+  font-size: clamp(24px, 3.4vw, 38px);
   font-weight: 500;
   letter-spacing: 0.28em;
   text-indent: 0.28em;
@@ -642,7 +642,7 @@ body.menu-open {
 
 .index-hero-title .hero-line--focus {
   font-weight: 700;
-  font-size: clamp(30px, 4.6vw, 52px);
+  font-size: clamp(26px, 3.8vw, 42px);
   letter-spacing: 0.32em;
   text-indent: 0.32em;
   color: #fff;
