@@ -42,8 +42,5 @@ excerpt: 因人再訪｜山林迷路｜門前插曲｜家常便飯｜機場巴�
 
 奇妙的是，當巴士靠站、我忐忑地將卡貼向讀卡器時，裡頭的餘額竟不偏不倚、剛剛好足夠支付車資。聽到拍卡成功的那一聲清脆提示音，懸在半空的心頭大石終於落了地。最終，我得以在登機閘口關閉前趕抵，為這趟充滿未知與小確幸的旅程，畫上一個有驚無險的句號。
 
-![清溪川](/img/korea-cheonggyecheon.jpg) ![五彩椅子](/img/korea-garden-chairs.jpg)
-
-![暮色鐵塔](/img/korea-tower-dusk.jpg) ![南山塔仰望](/img/korea-namsan-tower.jpg)
-
-![入口裝置](/img/korea-pluto-gate.jpg) ![纜車街景](/img/korea-cable-car.jpg)
+![五彩椅子](/img/korea-garden-chairs.jpg) ![暮色鐵塔](/img/korea-tower-dusk.jpg) 
+![南山塔仰望](/img/korea-namsan-tower.jpg) ![入口裝置](/img/korea-pluto-gate.jpg) 
